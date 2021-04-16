@@ -18,7 +18,8 @@ ui <-  navbarPage(  "Barcelona City Traffic Accident Explorer", id="nav",
              leafletOutput("mymap", width="100%", height = "100%" ),                  
               
              
-             #panel - help
+             ####  panel - help ###########################################
+             
              absolutePanel(id = "help", class = "panel panel-default", fixed = TRUE,
                            draggable = TRUE, top = 60, left = 60, right = "auto", bottom = "auto",
                            width = "auto", height = "auto",
@@ -28,7 +29,9 @@ ui <-  navbarPage(  "Barcelona City Traffic Accident Explorer", id="nav",
              
               ),
              
-              #panel- load data and filters  
+             
+             #####  panel- load data and filters  ############################
+             
               absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
                   draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
                    width = 400, height = "auto",
@@ -82,13 +85,14 @@ ui <-  navbarPage(  "Barcelona City Traffic Accident Explorer", id="nav",
                                inline = TRUE),
                   
                   
-                  actionButton("filter", "Aplica filtres")
+                  actionButton("filter", "Apply filters")
                   
              ),
              
              
              
-             #panel- summaries and plots 
+             ###  panel- summaries and plots  ###############################
+             
              absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
                            draggable = TRUE, bottom = 20, left = 20, right = "auto", top = "auto",
                            width = "33%", height = "auto",
@@ -96,7 +100,7 @@ ui <-  navbarPage(  "Barcelona City Traffic Accident Explorer", id="nav",
                            h2("Selectiom summary:"),
                            textOutput("NumAcc"),
                            textOutput("DailyMean"),
-                           textOutput("HourlyMean"),
+                          
                            
                            radioButtons("optplot", "",
                                         c("Accident typology" = "optTipus",

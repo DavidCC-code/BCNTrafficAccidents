@@ -18,8 +18,10 @@ server <- function(input, output, session){
         return(input$year)
     })
   
-    #download data file if necessary and read file and set default values 
-    # for input dates
+    ## load button - download data file if necessary and read file and set default values 
+    ## for input dates
+    ##
+    
     observeEvent(input$load,{
        
         rv$ACC <- load_data(year())
@@ -43,7 +45,9 @@ server <- function(input, output, session){
      
     })  
   
-    # reactive function retrieves data in polygon
+    ## Data in plygon - reactive function retrieves data in polygon
+    ##
+    
     DataInPoly <- reactive({
       if (is.null(input$newpoly)){rv$ACC}  
       else {
@@ -53,7 +57,9 @@ server <- function(input, output, session){
     })
 
 
-    # reactive function retrieves data in user selection 
+    ## reactive function retrieves data in user selection 
+    ##
+    
     DataInSelection <- reactive({
 
         d <- subset(isolate(rv$ACC), ((Date >= input$dataini
@@ -70,8 +76,10 @@ server <- function(input, output, session){
     })
     
    
-    # reactive function retrieves selected data, contained in polygon or not depending in 
-    # option selection
+    ## reactive function retrieves selected data, contained in polygon or not depending in 
+    ##  option selection
+    ##
+    
     Data <- reactive ({
         if (input$opt == "optTot"){
             data <- DataInSelection()
@@ -80,14 +88,15 @@ server <- function(input, output, session){
         data
     })
 
-    # Filter button is pressed , redraw map with data in selection as cluster an circle
-    # markers and poligon if it exists
-    # Output data grid to the data exploration tab
-    # Output summaries (number of observations selected and daily mean)
-    # Also output 1 plot out of 3 (depending on radio button selecion  )
+    ## Filter button is pressed , redraw map with data in selection as cluster an circle
+    ## markers and polygon if it exists
+    ## Output data grid to the data exploration tab
+    ## Output summaries (number of observations selected and daily mean)
+    ## Also output 1 plot out of 3 (depending on radio button selection  )
+    ##
+    
     observeEvent(input$filter, {
       
-     ## isolate dates and houre input  input$datafi - input$dataini
        # data, obsevations that meet filter criteria and inside poligon 
        data <- Data()
        
@@ -230,7 +239,9 @@ server <- function(input, output, session){
     latlongs<-reactiveValues()   #temporary to hold coords
     latlongs$df2 <- data.frame(Longitude = numeric(0), Latitude = numeric(0))
     
-   
+    ## new plygon is drawn
+    ##
+    
     observeEvent(input$mymap_draw_new_feature, {
       
         coor<-unlist(input$mymap_draw_new_feature$geometry$coordinates)
@@ -253,7 +264,8 @@ server <- function(input, output, session){
     })
     
     
-    ## ##
+    ## Delete polygon
+    ##
     
     observeEvent(input$mymap_draw_deleted_features, { 
       
