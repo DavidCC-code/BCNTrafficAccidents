@@ -1,0 +1,55 @@
+---
+title: " BCN traffic accident explorer"
+author: "David Contreras Carretero"
+date: "16/4/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(kableExtra)
+```
+
+## Barcelona's traffic accident explorer
+
+ Shiny app that allows to explore Barcelona city traffic accidents through an interactive map.
+ Main features are:
+ 
+- Data download from Barcelona's open data service. 
+- Interactive map, alows to navigate, filter and select data in user drawn polygon. 
+- Summary of selected data, selected data is summarized showing daily average.
+- Plots showing distribion by week day, hour range and typology of accident. 
+- Data grid showing selected data.  
+
+
+## Original Data
+
+```{r message=FALSE, warning= FALSE}
+
+url2020 <-  "https://opendata-ajuntament.barcelona.cat/data/dataset/834b8920-0685-4e16-8e20-faf13645f4f3/resource/86a3b39c-3cbc-4efd-977a-92ec9cb1b48a/download/2020_accidents_tipus_gu_bcn.csv"
+
+file2020 <- "../data/2020_accidents_tipus_gu_bcn.csv"
+
+#download.file(url2020,file2020)
+data <- read.csv(file2020, encoding="UTF-8", sep = ";")
+
+
+```
+As you can see original data is posted in catalan, both values and column names. After a good thinking on the matter I decided to
+translate it to English to do this exercise. 
+
+
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
