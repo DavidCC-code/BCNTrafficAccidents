@@ -97,7 +97,7 @@ ui <-  navbarPage(  "Barcelona City Traffic Accident Explorer", id="nav",
                            draggable = TRUE, bottom = 20, left = 20, right = "auto", top = "auto",
                            width = "33%", height = "auto",
                            
-                           h2("Selectiom summary:"),
+                           h2("Selection summary:"),
                            textOutput("NumAcc"),
                            textOutput("DailyMean"),
                           

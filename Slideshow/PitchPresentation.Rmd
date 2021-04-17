@@ -23,33 +23,32 @@ library(kableExtra)
 - Data grid showing selected data.  
 
 
-## Original Data
+## Interactive map and summaries
 
-```{r message=FALSE, warning= FALSE}
+When a data file is selected and filter applied over the interactive map a summaries panel is displayed showing the total number of accidents, the daily mean and one of three possible plots showing the accident typologies ans its weight over total accidents, a distribution in week days and a hourly distribution. 
 
-url2020 <-  "https://opendata-ajuntament.barcelona.cat/data/dataset/834b8920-0685-4e16-8e20-faf13645f4f3/resource/86a3b39c-3cbc-4efd-977a-92ec9cb1b48a/download/2020_accidents_tipus_gu_bcn.csv"
-
-file2020 <- "../data/2020_accidents_tipus_gu_bcn.csv"
-
-#download.file(url2020,file2020)
-data <- read.csv(file2020, encoding="UTF-8", sep = ";")
-
-
+```{r echo=TRUE, message=FALSE, warning= FALSE}
+file2018 <- "./2018_accidents_tipus_gu_bcn.csv"
+data <- read.csv(file2018, encoding="UTF-8", sep = ",")
+n <- nrow(data)
+data$Date <- as.Date(with(data, paste(Any, Mes, Dia_de_mes,sep="-")),
+                   "%Y-%m-%d")
+DataDaily <- data  %>% group_by(Date) %>% summarize(nacc = sum(n())) 
+DailyMean <- round(as.numeric(DataDaily %>% summarise( mean(nacc))),2)
 ```
-As you can see original data is posted in catalan, both values and column names. After a good thinking on the matter I decided to
-translate it to English to do this exercise. 
+
+As example, total number for 2018 were `r n`  and a daily  was `r DailyMean`, as shown in next slide image.
 
 
+## 2018 example
+
+![](images/redim_imagen1.jpg)
+
+## Polygon selection
+An interesting feature is the polygon selection. Allows to explore a specific zone.
+![](images/redim_imagen2.jpg)
 
 ## Slide with R Output
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-## Slide with Plot
-
-```{r pressure}
-plot(pressure)
 ```
 
