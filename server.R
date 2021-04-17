@@ -223,7 +223,7 @@ server <- function(input, output, session){
                           geom_bar( mapping = aes(stat = "count", y = Hour)) +
                           coord_flip() +
                           theme_minimal() +  
-                          labs(y= "Number of accidents" , x="Hour")
+                          labs(x= "Number of accidents" , y="Hour")
              }
              
              d
