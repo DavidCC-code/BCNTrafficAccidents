@@ -1,3 +1,12 @@
+#############################################################################
+# User interface files for Barcelona Traffic Accident Explorer              # 
+# Developed by David Contreras Carretero 2020                               #       
+#                                                                           # 
+#  Navigation page with two tabs, first showing a leaflet map and second    #
+#  displaying a data grid. Two panels over the map allow filtering and      #
+#  ploting exploratory graphs using selected data                           #
+#                                                                           #
+#############################################################################
 
 ui <-  navbarPage(  "Barcelona City Traffic Accident Explorer", id="nav",
        tabPanel("Interactive Map", 

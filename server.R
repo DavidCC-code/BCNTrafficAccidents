@@ -1,5 +1,8 @@
-
-
+################################################################################
+#Server function for Barcelonat Traffic Accident Explorer.                     #  
+# Developed by David Contreras Carretero - 2020                                #  
+#                                                                              #
+################################################################################
 
 server <- function(input, output, session){
     
